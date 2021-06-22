@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">autobiography</string>
     <string name="logo_name">intrologo</string>
+    <string name="setting">setting</string>
+    <string name="record">record</string>
+    <string name="autobiography">autobiography</string>
+    <string name="export">export</string>
 </resources>
