@@ -2,20 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/first_tab"
+        android:id="@+id/write_tab"
         app:showAsAction="always"
         android:enabled="true"
         android:icon="@drawable/write_icon"
         android:title="@string/record" />
     <item
-        android:id="@+id/second_tab"
+        android:id="@+id/autobiography_tab"
         app:showAsAction="always"
         android:enabled="true"
         android:icon="@drawable/autobiography_icon"
         android:title="@string/autobiography" />
 
     <item
-        android:id="@+id/third_tab"
+        android:id="@+id/export_tab"
         app:showAsAction="always"
         android:enabled="true"
         android:icon="@drawable/export_icon"
@@ -23,7 +23,7 @@
     </item>
 
     <item
-        android:id="@+id/fourth_tab"
+        android:id="@+id/setting_tab"
         app:showAsAction="always"
         android:enabled="true"
         android:icon="@drawable/setting_icon"
