@@ -11,12 +11,49 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    AutobiographyFragment autobiographyFragment;
+    ExportFragment exportFragment;
+    SettingFragment settingFragment;
+    WriteFragment writeFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        exportFragment = new ExportFragment();
+        autobiographyFragment = new AutobiographyFragment();
+        settingFragment = new SettingFragment();
+        writeFragment = new WriteFragment();
+
         ActionBar bar = getSupportActionBar();
         bar.hide();
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, writeFragment).commit();
+
+        BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
+        bottom_menu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()) {
+                    case R.id.write_tab:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, writeFragment).commit();
+                        return true;
+                    case R.id.autobiography_tab:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, autobiographyFragment).commit();
+                        return true;
+                    case R.id.export_tab:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, exportFragment).commit();
+                        return true;
+                    case R.id.setting_tab:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, settingFragment).commit();
+                        return true;
+                }
+                return false;
+            }
+        });
+
+
     }
+
 }
