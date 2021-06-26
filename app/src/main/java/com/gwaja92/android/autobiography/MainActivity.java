@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        InitializePopupActivity initializePopupActivity = new InitializePopupActivity(MainActivity.this);
+        initializePopupActivity.showDialog("dddd");
 
     }
 
