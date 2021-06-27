@@ -2,8 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/editBirthday"
     android:layout_width="250dp"
-    android:layout_height="280dp"
+    android:layout_height="270dp"
     android:layout_gravity="center"
     android:orientation="vertical"
     app:layout_constraintCircleRadius="10dp">
@@ -11,6 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:onClick="click"
         android:orientation="vertical"
         app:layout_constraintCircleRadius="10dp"
         tools:layout_editor_absoluteX="0dp"
@@ -55,7 +57,7 @@
 
             <EditText
                 android:id="@+id/editTextTextPersonName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
@@ -82,26 +84,22 @@
                 android:layout_weight="1"
                 android:text="@string/birthday" />
 
-            <EditText
-                android:id="@+id/editTextDate"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/birthDay"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:ems="10"
-                android:inputType="date" />
+                android:text="TextView" />
+
         </LinearLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/popupConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="50dp"
             android:layout_marginRight="50dp"
             android:text="@string/confirm" />
