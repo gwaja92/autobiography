@@ -22,7 +22,7 @@ public class InitializePopupActivity {
 
 
         txt_Message = dialog.findViewById(R.id.popuptext);
-        txt_Message.setText(message);
+        //txt_Message.setText(message);
 
         dialog.show();
 
