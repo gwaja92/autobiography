@@ -19,6 +19,8 @@ public class InitializePopupActivity extends AppCompatActivity {
     Dialog dialog;
     Button confirmBtn;
     View birthDaySelect;
+    Dialog dateDialog;
+    View dateConfirmBtn;
 
     public InitializePopupActivity(Activity activity) {
         this.activity = activity;
@@ -48,9 +50,8 @@ public class InitializePopupActivity extends AppCompatActivity {
         birthDaySelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
+                DatePickerActivity datePickerActivity = new DatePickerActivity(activity);
+                datePickerActivity.showCalenderDialog();
 
             }
         });
