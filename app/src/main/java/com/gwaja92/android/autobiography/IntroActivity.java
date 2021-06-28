@@ -3,7 +3,6 @@ package com.gwaja92.android.autobiography;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.WindowManager;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +12,8 @@ public class IntroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActionBar bar = getSupportActionBar();
-        bar.hide();
+        if (bar != null)
+            bar.hide();
 
         setContentView(R.layout.intro_activity); //xml , java 소스 연결
         Handler handler = new Handler();

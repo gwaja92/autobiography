@@ -1,18 +1,11 @@
 package com.gwaja92.android.autobiography;
 
-import androidx.activity.contextaware.OnContextAvailableListener;
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -22,8 +15,6 @@ public class MainActivity extends AppCompatActivity {
     ExportFragment exportFragment;
     SettingFragment settingFragment;
     WriteFragment writeFragment;
-    Button confirmBtn;
-    View btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
         writeFragment = new WriteFragment();
 
         ActionBar bar = getSupportActionBar();
-        bar.hide();
+        if (bar != null)
+            bar.hide();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container, writeFragment).commit();
 
@@ -44,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         bottom_menu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()) {
+                switch (item.getItemId()) {
                     case R.id.write_tab:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, writeFragment).commit();
                         return true;
@@ -64,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
         InitializePopupActivity initializePopupActivity = new InitializePopupActivity(MainActivity.this);
         initializePopupActivity.showDialog("dddd");
-
-
 
 
     }
