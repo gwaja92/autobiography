@@ -26,6 +26,12 @@ public class DatePickerActivity extends AppCompatActivity {
         this.activity = activity;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+        showCalenderDialog();
+    }
+
     public void showCalenderDialog() {
         calendarDialog = new Dialog(activity);
         calendarDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

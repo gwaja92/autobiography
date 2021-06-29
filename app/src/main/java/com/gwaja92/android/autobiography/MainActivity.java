@@ -1,5 +1,6 @@
 package com.gwaja92.android.autobiography;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -54,8 +55,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        InitializePopupActivity initializePopupActivity = new InitializePopupActivity(MainActivity.this);
-        initializePopupActivity.showDialog("dddd");
+       // InitializePopupActivity initializePopupActivity = new InitializePopupActivity(MainActivity.this);
+       // initializePopupActivity.showDialog("dddd");
+
+        Intent intent = new Intent(this, InitializePopupActivity.class);
+        startActivity(intent);
+
 
 
     }
