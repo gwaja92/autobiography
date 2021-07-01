@@ -1,12 +1,8 @@
 package com.gwaja92.android.autobiography;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.MotionEvent;
-import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,37 +36,29 @@ public class InitializePopupActivity extends AppCompatActivity {
         editTextTextPersonName = findViewById(id.editTextTextPersonName);
 
         confirmBtn = findViewById(id.popupConfirm);
-        confirmBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (editTextTextPersonName.getText().toString().isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "이름을 입력해주세요.", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                if (year == 0 || month == 0 || day == 0) {
-                    Toast.makeText(getApplicationContext(), "생일을 입력해주세요.", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                Intent intent = new Intent();
-                intent.putExtra("mYear", year);
-                intent.putExtra("mMonth", month);
-                intent.putExtra("mDay", day);
-                intent.putExtra("mName", editTextTextPersonName.getText().toString());
-                setResult(RESULT_OK, intent);
-                finish();
+        confirmBtn.setOnClickListener(v -> {
+            if (editTextTextPersonName.getText().toString().isEmpty()) {
+                Toast.makeText(getApplicationContext(), "이름을 입력해주세요.", Toast.LENGTH_LONG).show();
+                return;
             }
+            if (year == 0 || month == 0 || day == 0) {
+                Toast.makeText(getApplicationContext(), "생일을 입력해주세요.", Toast.LENGTH_LONG).show();
+                return;
+            }
+            Intent intent = new Intent();
+            intent.putExtra("mYear", year);
+            intent.putExtra("mMonth", month);
+            intent.putExtra("mDay", day);
+            intent.putExtra("mName", editTextTextPersonName.getText().toString());
+            setResult(RESULT_OK, intent);
+            finish();
         });
 
 
         Intent intentBirtday = new Intent(this, DatePickerActivity.class);
 
         birthDaySelect = findViewById(id.birthDaySelect);
-        birthDaySelect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivityForResult(intentBirtday, 1234);
-            }
-        });
+        birthDaySelect.setOnClickListener(v -> startActivityForResult(intentBirtday, 1234));
 
 
     }
@@ -80,31 +68,29 @@ public class InitializePopupActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1234 && resultCode == RESULT_OK) {
+            assert data != null;
             year = data.getIntExtra("mYear", 0);
             month = data.getIntExtra("mMonth", 0);
             day = data.getIntExtra("mDay", 0);
 
-            String dateStr = Integer.toString(year) + "년 " +
-                    Integer.toString(month) + "월 " + Integer.toString(day) + "일";
+            String dateStr = year + "년 " +
+                    month + "월 " + day + "일";
 
             birthDaySelect.setText(dateStr);
         }
 
     }
 
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         // Don't close when click the outside of activity
-        if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
-            return false;
-        }
-        return true;
+        return event.getAction() != MotionEvent.ACTION_OUTSIDE;
     }
 
     @Override
     public void onBackPressed() {
         // Don't operate Android's back button
-        return;
     }
 
 }
