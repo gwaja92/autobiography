@@ -44,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, exportFragment).commit();
                     return true;
                 case R.id.setting_tab:
+                    Bundle bundle = new Bundle();
+                    String ddd = "dddddd";
+                    bundle.putString("send", ddd);
+                    settingFragment.setArguments(bundle);
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, settingFragment).commit();
                     return true;
             }
@@ -52,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, InitializePopupActivity.class);
         startActivityForResult(intent, 1234);
+
+
 
     }
 
