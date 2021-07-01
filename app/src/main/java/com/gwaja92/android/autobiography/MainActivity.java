@@ -2,9 +2,7 @@ package com.gwaja92.android.autobiography;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,29 +32,23 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.container, writeFragment).commit();
 
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
-        bottom_menu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.write_tab:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, writeFragment).commit();
-                        return true;
-                    case R.id.autobiography_tab:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, autobiographyFragment).commit();
-                        return true;
-                    case R.id.export_tab:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, exportFragment).commit();
-                        return true;
-                    case R.id.setting_tab:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, settingFragment).commit();
-                        return true;
-                }
-                return false;
+        bottom_menu.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.write_tab:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, writeFragment).commit();
+                    return true;
+                case R.id.autobiography_tab:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, autobiographyFragment).commit();
+                    return true;
+                case R.id.export_tab:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, exportFragment).commit();
+                    return true;
+                case R.id.setting_tab:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, settingFragment).commit();
+                    return true;
             }
+            return false;
         });
-
-       // InitializePopupActivity initializePopupActivity = new InitializePopupActivity(MainActivity.this);
-       // initializePopupActivity.showDialog("dddd");
 
         Intent intent = new Intent(this, InitializePopupActivity.class);
         startActivityForResult(intent, 1234);

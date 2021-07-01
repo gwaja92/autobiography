@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,6 +31,23 @@ public class InitializePopupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(layout.initialize_popup_activity);
+
+        ActivityResultLauncher<Intent> datePickerActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK) {
+                        // There are no request codes
+                        Intent data = result.getData();
+                        assert data != null;
+                        year = data.getIntExtra("mYear", 0);
+                        month = data.getIntExtra("mMonth", 0);
+                        day = data.getIntExtra("mDay", 0);
+
+                        String dateStr = year + "년 " +
+                                month + "월 " + day + "일";
+
+                        birthDaySelect.setText(dateStr);
+                    }
+                });
 
         getWindow().getAttributes().width = 850;
         getWindow().getAttributes().height = 820;
@@ -55,13 +74,13 @@ public class InitializePopupActivity extends AppCompatActivity {
         });
 
 
-        Intent intentBirtday = new Intent(this, DatePickerActivity.class);
+        Intent intentBirthday = new Intent(this, DatePickerActivity.class);
 
         birthDaySelect = findViewById(id.birthDaySelect);
-        birthDaySelect.setOnClickListener(v -> startActivityForResult(intentBirtday, 1234));
-
+        birthDaySelect.setOnClickListener(v -> datePickerActivityResultLauncher.launch(intentBirthday));
 
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
