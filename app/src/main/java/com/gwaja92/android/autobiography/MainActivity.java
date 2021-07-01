@@ -59,9 +59,7 @@ public class MainActivity extends AppCompatActivity {
        // initializePopupActivity.showDialog("dddd");
 
         Intent intent = new Intent(this, InitializePopupActivity.class);
-        startActivity(intent);
-
-
+        startActivityForResult(intent, 1234);
 
     }
 

@@ -5,9 +5,10 @@
     <string name="record">record</string>
     <string name="autobiography">autobiography</string>
     <string name="export">export</string>
-    <string name="birthday">생일</string>
+    <string name="birthday">자서전 시작</string>
     <string name="autobiography_name">자서전 저자</string>
     <string name="confirm">확인</string>
+    <string name="daySelect">날짜 선택(생일)</string>
 
 
     <!-- Preference Titles -->
