@@ -21,9 +21,11 @@
 
         <activity android:name=".MainActivity" />
         <activity
+            android:name=".DatePickerActivity"
+            android:theme="@style/Theme.MyDialog"></activity>
+        <activity
             android:name=".InitializePopupActivity"
             android:theme="@style/Theme.MyDialog"></activity>
-
     </application>
 
 </manifest>

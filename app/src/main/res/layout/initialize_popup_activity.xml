@@ -12,7 +12,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:onClick="click"
         android:orientation="vertical"
         app:layout_constraintCircleRadius="10dp"
         tools:layout_editor_absoluteX="0dp"
@@ -101,9 +100,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="63dp"
             android:layout_marginEnd="50dp"
             android:layout_marginRight="50dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/confirm" />
 
     </LinearLayout>
