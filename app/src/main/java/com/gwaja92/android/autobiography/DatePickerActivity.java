@@ -1,18 +1,12 @@
 package com.gwaja92.android.autobiography;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.DatePicker;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
@@ -20,9 +14,6 @@ import java.util.GregorianCalendar;
 
 public class DatePickerActivity extends AppCompatActivity {
     private int mYear = 0, mMonth = 0, mDay = 0;
-    Dialog calendarDialog;
-    Activity activity;
-    View dateEnterBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,29 +45,21 @@ public class DatePickerActivity extends AppCompatActivity {
 
     }
 
-    DatePicker.OnDateChangedListener mOnDateChangedListener = new DatePicker.OnDateChangedListener() {
-
-        @Override
-        public void onDateChanged(DatePicker datePicker, int yy, int mm, int dd) {
-            mYear = yy;
-            mMonth = mm;
-            mDay = dd;
-        }
+    DatePicker.OnDateChangedListener mOnDateChangedListener = (datePicker, yy, mm, dd) -> {
+        mYear = yy;
+        mMonth = mm;
+        mDay = dd;
     };
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         // Don't close when click the outside of activity
-        if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
-            return false;
-        }
-        return true;
+        return event.getAction() != MotionEvent.ACTION_OUTSIDE;
     }
 
     @Override
     public void onBackPressed() {
         // Don't operate Android's back button
-        return;
     }
 
 }
