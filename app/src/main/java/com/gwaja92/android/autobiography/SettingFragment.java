@@ -1,5 +1,7 @@
 package com.gwaja92.android.autobiography;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -14,28 +16,24 @@ import android.widget.Toast;
 
 public class SettingFragment extends Fragment {
 
+    SharedPreferences sharedPref;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        String getstr = getArguments().getString("send");
+        sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
 
-
-        Toast.makeText(getActivity(), getstr, Toast.LENGTH_LONG).show();
+        String name = sharedPref.getString("sharedName", "");
 
 
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
 
         TextView nameTextView = view.findViewById(R.id.myNameInSettings);
-
-
-        nameTextView.setText(getstr);
+        nameTextView.setText(name);
 
         // Inflate the layout for this fragment
         return view;
-
-
-
 
 
     }
